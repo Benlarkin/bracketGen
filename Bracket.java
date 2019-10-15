@@ -21,23 +21,46 @@ import java.util.*;
 
 public class Bracket {
     private static ArrayList<Player> players = new ArrayList<Player>();
-    private static WinnersTree bracket = new WinnersTree();
+    private static Player[] bracket;
+    private static int backfill;
 
-    public Bracket() {
+    public Bracket(int numPlayers) {
+        int numGames = powerFunc(numPlayers) - 1;
+        this.bracket = new Player[numGames];
+        this.backfill = numGames-1;
     }
 
-    public void addPlayer(Player p){
+    public Player[] getBracket() {
+        return this.bracket;
+    }
+    
+    public void printBracket(){
+        System.out.println(Arrays.toString(bracket));
+    }
+
+    public void addPlayer(Player p) {
         players.add(p);
+        this.bracket[backfill] = p;
+        this.backfill--;
+    }
+
+    private int powerFunc(int numPower) {
+        int acc = 1;
+        for (int i = 0; i < numPower; i++) {
+            acc *= 2;
+        }
+        return acc;
     }
     // @Override
     // public boolean equals(Object o) {
-    //     if (o == this)
-    //         return true;
-    //     if (!(o instanceof Bracket)) {
-    //         return false;
-    //     }
-    //     Bracket bracket = (Bracket) o;
-    //     return Object.equals(players, bracket.players) && Objects.equals(bracket, bracket.bracket);
+    // if (o == this)
+    // return true;
+    // if (!(o instanceof Bracket)) {
+    // return false;
+    // }
+    // Bracket bracket = (Bracket) o;
+    // return Object.equals(players, bracket.players) && Objects.equals(bracket,
+    // bracket.bracket);
     // }
 
     @Override
