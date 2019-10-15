@@ -15,13 +15,38 @@
             2  8   3  5
 
 */
-package bracketGen;
+// package bracketGen;
+
 import java.util.*;
 
-public class Bracket{
+public class Bracket {
     private static ArrayList<Player> players = new ArrayList<Player>();
+    private static WinnersTree bracket = new WinnersTree();
 
-    public static void addPlayer(String player){
-        players.add(new Player(player));
+    public Bracket() {
+    }
+
+    public void addPlayer(Player p){
+        players.add(p);
+    }
+    // @Override
+    // public boolean equals(Object o) {
+    //     if (o == this)
+    //         return true;
+    //     if (!(o instanceof Bracket)) {
+    //         return false;
+    //     }
+    //     Bracket bracket = (Bracket) o;
+    //     return Object.equals(players, bracket.players) && Objects.equals(bracket, bracket.bracket);
+    // }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(players, bracket);
+    }
+
+    @Override
+    public String toString() {
+        return "{" + "}";
     }
 }

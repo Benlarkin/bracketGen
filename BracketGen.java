@@ -1,4 +1,4 @@
-package bracketGen;
+// package bracketGen;
 import java.util.*;
 
 public class BracketGen {
@@ -14,7 +14,7 @@ public class BracketGen {
         int numPlayers = sc.nextInt();
         System.out.println("Input your player names, followed by enter (e.g. Tom /enter/ Ben /enter/)");
         for (int i = 0; i < numPlayers; i++) {
-            bracket.addPlayer(sc.next());
+            bracket.addPlayer(new Player(sc.next()));
         }
         sc.close();
     }
